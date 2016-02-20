@@ -5,5 +5,5 @@ Homestead.yaml
 Homestead.json
 .env
 /nbproject/private/
-.gitignore
 /public/libs
+.gitignore
