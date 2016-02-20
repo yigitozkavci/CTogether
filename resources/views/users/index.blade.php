@@ -32,15 +32,40 @@
 		<h3>WORKSPACE</h3>
 	</div>
 	<div class="workspace">
-
+		<div class="drop-notifier">
+			You can drag and drop tools here!
+		</div>
 	</div>
 </div>
 <div class="col-xs-6 questions-wrapper">
 	<div class="panel-title">
 		<h3>QUESTIONS</h3>
 	</div>
-	<div class="questions">
-		yis
+	<div class="questions row">
+		<div class="question col-xs-6">
+			<div class="body">
+				<img src="http://placehold.it/400x400" alt="">
+			</div>
+			<div class="footer">
+				<div class="footer-answers">5 answers</div>
+			</div>
+		</div>
+		<div class="question col-xs-6">
+			<div class="body">
+				<img src="http://placehold.it/400x400" alt="">
+			</div>
+			<div class="footer">
+				<div class="footer-answers">5 answers</div>
+			</div>
+		</div>
+		<div class="question col-xs-6">
+			<div class="body">
+				<img src="http://placehold.it/400x400" alt="">
+			</div>
+			<div class="footer">
+				<div class="footer-answers">5 answers</div>
+			</div>
+		</div>
 	</div>
 </div>
 @endsection
