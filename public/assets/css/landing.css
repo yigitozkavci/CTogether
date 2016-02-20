@@ -1,0 +1,18 @@
+.navbar-brand small {
+  font-size: 16px;
+  opacity: 0.8; }
+
+.navbar-default, .navbar-brand {
+  color: white !important; }
+
+.modal-room-list .modal-room {
+  border: 2px solid #323F85;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 2px;
+  -webkit-transition: 0.2s;
+  cursor: pointer; }
+
+.modal-room-list .modal-room:hover {
+  background-color: #323F85;
+  color: white; }

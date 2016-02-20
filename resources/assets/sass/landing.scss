@@ -1,0 +1,23 @@
+@import 'variables';
+.navbar-brand small {
+	font-size:16px;
+	opacity:0.8;
+}
+.navbar-default, .navbar-brand {
+	color: white !important;
+}
+.modal-room-list {
+	.modal-room {
+		border: 2px solid $dblue;
+
+		display:inline-block;
+		padding:5px;
+		border-radius: $border-radius;
+		-webkit-transition: 0.2s;
+		cursor: pointer;
+	}
+	.modal-room:hover {
+		background-color: $dblue;
+		color:white;
+	}
+}
