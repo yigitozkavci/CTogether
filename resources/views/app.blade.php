@@ -25,7 +25,14 @@
 </head>
     <body>
         <nav class="header">
-
+            <div class="container-fluid">
+                <div class="col-xs-12">
+                    <div class="logo">
+                        <i class="fa fa-bars"></i>
+                        C<sup>2</sup>gether
+                    </div>
+                </div>
+            </div>
         </nav>
         <nav class="sidebar hidden" data-open="true">
             <div class="sidebar-heading">

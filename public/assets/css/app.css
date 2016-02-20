@@ -17,7 +17,7 @@ nav.sidebar {
   width: 250px;
   height: 100%;
   background-color: #111940;
-  font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #D3D6E6;
   position: absolute;
   z-index: 1; }
@@ -50,3 +50,8 @@ nav.header {
   height: 60px;
   background-color: #39424e;
   width: 100%; }
+  nav.header .logo {
+    font-size: 28px;
+    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 60px;
+    color: white; }
