@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Agency - Start Bootstrap Theme</title>
+    <title>CTogether - Ask together, solve together</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
+                <a class="navbar-brand page-scroll" href="#page-top">CTogether - <small>Ask together, solve together</small></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -81,9 +81,10 @@
     <header>
         <div class="container">
             <div class="intro-text">
-                <div class="intro-lead-in">Welcome To Our Studio!</div>
-                <div class="intro-heading">It's Nice To Meet You</div>
-                <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
+                <div class="intro-lead-in">Start by creating a room or joinning one</div>
+                <div class="intro-heading">Now!</div>
+                <a href="#" class="page-scroll btn btn-xl"><i class="fa fa-plus-circle"></i> Create Room</a>
+                <a href="#" class="page-scroll btn btn-xl"><i class="fa fa-arrow-right"></i> Join Room</a>
             </div>
         </div>
     </header>
