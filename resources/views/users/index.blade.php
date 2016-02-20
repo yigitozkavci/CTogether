@@ -72,3 +72,6 @@
 @section('css')
 	<link href="/assets/css/user.css" rel="stylesheet">
 @endsection
+@section('js')
+	<script src="/assets/js/user.js"></script>
+@endsection

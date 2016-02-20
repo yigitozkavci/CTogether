@@ -16,11 +16,11 @@ gulp.task('sass', function() {
 gulp.task('coffee', function() {
   gulp.src('resources/assets/coffee/*.coffee')
     .pipe(coffee({bare: true}))
-    .pipe(gulp.dest('public/js'));
+    .pipe(gulp.dest('public/assets/js'));
 });
 
 gulp.task('default', ['coffee', 'sass'])
 gulp.task('watch', function() {
-  gulp.watch('resources/assets/coffee/*.coffee', ['coffee<']);
+  gulp.watch('resources/assets/coffee/*.coffee', ['coffee']);
   gulp.watch('resources/assets/sass/*.scss', ['sass']);
 });

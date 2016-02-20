@@ -13,7 +13,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/libs/sumoselect/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/libs/sumoselect/sumoselect.css" rel="stylesheet">
     <link href="/assets/css/app.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -34,10 +34,10 @@
                 </div>
             </div>
         </nav>
-        <nav class="sidebar hidden" data-open="true">
+        <nav class="sidebar" data-open="true">
             <div class="sidebar-heading">
                 <div class="close-icon"><i class="fa fa-times"></i></div>
-                <div class="sidebar-logo">C<sup>2</sup>ogether</div>
+                <div class="sidebar-logo">C<sup>2</sup>gether</div>
             </div>
             <div class="clearfix"></div>
             <h2 class="rooms-heading">Rooms</h2>
@@ -74,9 +74,9 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="/libs/jquery/dist/jquery.min.js"></script>
         <script src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-
+        <script src="/libs/sumoselect/jquery.sumoselect.min.js"></script>
+        @yield('js')
     </body>
 </html>
