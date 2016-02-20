@@ -5,7 +5,8 @@
     "jquery": "2.2.*",
     "jquery-ui": "latest",
     "bootstrap": "latest",
-    "font-awesome": "latest"
+    "font-awesome": "latest",
+    "sumoselect": "^2.0.2"
   },
   "resolutions": {
     "jquery": "2.2.*",

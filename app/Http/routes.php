@@ -14,7 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::controllers([
+    'workspace' => 'UsersController'
+]);
 /*
 |--------------------------------------------------------------------------
 | Application Routes

@@ -1,3 +1,15 @@
+.border-red {
+  border-color: red; }
+
+.border-yellow {
+  border-color: yellow; }
+
+.border-green {
+  border-color: green; }
+
+.border-blue {
+  border-color: blue; }
+
 .navbar-brand small {
   font-size: 16px;
   opacity: 0.8; }
@@ -16,3 +28,9 @@
 .modal-room-list .modal-room:hover {
   background-color: #323F85;
   color: white; }
+
+.intro-lead-much-in {
+  font-size: 40px !important; }
+
+.intro-lead-in {
+  font-size: 30px !important; }

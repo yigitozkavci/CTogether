@@ -1,2 +1,21 @@
 $dblue: #323F85;
+$darkerblue: #111940;
 $border-radius: 2px;
+$darkerdarkerblue: #080F30;
+
+$context-red: red;
+$context-yellow: yellow;
+$context-green: green;
+$context-blue: blue;
+.border-red {
+	border-color:$context-red;
+}
+.border-yellow {
+	border-color:$context-yellow;
+}
+.border-green {
+	border-color:$context-green;
+}
+.border-blue {
+	border-color:$context-blue;
+}

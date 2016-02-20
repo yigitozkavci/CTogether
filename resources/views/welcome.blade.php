@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CTogether - Ask together, solve together</title>
+    <title>CTogether</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -90,6 +90,7 @@
     <header>
         <div class="container">
             <div class="intro-text">
+                <div class="intro-lead-in intro-lead-much-in">Ask together, solve together</div>
                 <div class="intro-lead-in">Start by creating a room or joining one</div>
                 <div class="intro-heading">Now!</div>
                 <a href="#" class="btn btn-xl"><i class="fa fa-plus-circle"></i> Create Room</a>
@@ -102,7 +103,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; Your Website 2014</span>
+                    <span class="copyright">There is no copyright - CTogether</span>
                 </div>
                 <div class="col-md-4">
                     <ul class="list-inline social-buttons">
