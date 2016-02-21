@@ -1,24 +1,8 @@
-var currentMousePos, div, parseWorkspace, topics, updateEventHandlers, updateToolbox;
+var currentMousePos, div, toolsOnBoard, topics, updateEventHandlers, updateToolbox;
 
 topics = ["mathematics", "electronics"];
 
-
-/*
-class Tool
-	constructor: (@icon_code, @name, @topic) ->
-		@topic = topics[@topic]
-	prepareHtml: () ->
-		'<div class="tool">
-			<div class="icon">'+@icon_code+'</div>
-			'+@name+'
-		</div>'
-tools = []
-tools.push(new Tool '<i class="fa fa-right-arrow"></i>', 'RightArrow', 0)
-tools.push(new Tool '<i class="fa fa-left-arrow"></i>', 'LeftArrow', 0)
-tools.push(new Tool '<i class="fa fa-home"></i>', 'Home', 1)
-tools.push(new Tool '&#8747;', 'Integral', 0)
-tools.push(new Tool '√', 'Square Root', 0)
- */
+toolsOnBoard = [];
 
 currentMousePos = {
   x: 1,
@@ -73,6 +57,14 @@ $(function() {
           'left': ui.offset.left - 10,
           'top': ui.offset.top - 50,
           'position': 'absolute'
+        });
+        toolsOnBoard.push({
+          icon: icon,
+          positions: {
+            left: elementToAdd.left,
+            right: elementToAdd.right
+          },
+          type: elem.data('type')
         });
         $('.workspace').append(elementToAdd);
         return updateEventHandlers();
@@ -137,25 +129,3 @@ $(".logo").click(function() {
     width: 250
   }, 200);
 });
-
-$(".submit-answer").click(function() {
-  return parseWorkspace();
-});
-
-parseWorkspace = function() {
-  return html2canvas($(".workspace"), {
-    onrendered: function(canvas) {
-      $.ajax({
-        url: "http://localhost:8000/api/v1/answers",
-        type: "POST",
-        data: {
-          image: canvas.toDataURL("image/png")
-        },
-        success: function(data, textStatus, jqXHR) {}
-      });
-      return console.log(data({
-        error: function(jqXHR, textStatus, errorThrown) {}
-      }));
-    }
-  });
-};

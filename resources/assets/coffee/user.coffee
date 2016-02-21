@@ -1,20 +1,5 @@
 topics = ["mathematics", "electronics"]
-###
-class Tool
-	constructor: (@icon_code, @name, @topic) ->
-		@topic = topics[@topic]
-	prepareHtml: () ->
-		'<div class="tool">
-			<div class="icon">'+@icon_code+'</div>
-			'+@name+'
-		</div>'
-tools = []
-tools.push(new Tool '<i class="fa fa-right-arrow"></i>', 'RightArrow', 0)
-tools.push(new Tool '<i class="fa fa-left-arrow"></i>', 'LeftArrow', 0)
-tools.push(new Tool '<i class="fa fa-home"></i>', 'Home', 1)
-tools.push(new Tool '&#8747;', 'Integral', 0)
-tools.push(new Tool '√', 'Square Root', 0)
-###
+toolsOnBoard = []
 currentMousePos = {x: 1, y: 1}
 $(document).mousemove (e) ->
 	currentMousePos.x = e.pageX;
@@ -54,6 +39,14 @@ $ ->
 					'top': ui.offset.top-50,
 					'position': 'absolute'
 				})
+				toolsOnBoard.push({
+					icon: icon,
+					positions: {
+						left: elementToAdd.left,
+						right: elementToAdd.right
+					},
+					type: elem.data('type')
+				});
 				$('.workspace').append(elementToAdd)
 				updateEventHandlers()
 
@@ -99,5 +92,3 @@ $(".logo").click () ->
 	div.animate
 		width:250
 		200
-$(".submit-answer").click () ->
-	parseWorkspace()

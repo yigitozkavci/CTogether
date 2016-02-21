@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Topic extends Model
+class DynamicIcon extends Model
 {
-    public function questions() {
-        $this->hasMany('App\Question');
+    public function image() {
+        $this->belongsTo('App\Image');
     }
     protected $guarded = [];
 }
