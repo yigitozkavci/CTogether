@@ -21,20 +21,6 @@ $(document).mousemove (e) ->
 	currentMousePos.y = e.pageY;
 $ ->
 	updateToolbox('mathematics')
-	$("nav.sidebar .close-icon").click () ->
-		div = $("nav.sidebar")
-		div.animate
-			width:0
-			200
-			->
-				div.css('display', 'none')
-	$(".logo").click () ->
-		div = $("nav.sidebar")
-		div.css
-			'display': 'block'
-		div.animate
-			width:250
-			200
 	$(".question .body").click () ->
 		$("#showQuestionModal").modal();
 	selectbox = $(".sumoselect")
@@ -47,11 +33,11 @@ $ ->
 	$(".workspace").droppable
 		hoverClass: "hovered-workspace"
 		out: (event, ui) ->
-			$(@).find(".drop-notifier").fadeOut(500)
+			$(@).find(".drop-notifier").fadeOut(200)
 		over: (event, ui) ->
-			$(@).find(".drop-notifier").fadeIn(500)
+			$(@).find(".drop-notifier").fadeIn(200)
 		drop: (event, ui) ->
-			$(".drop-notifier").fadeOut(500);
+			$(".drop-notifier, .drop-notifier > span").fadeOut(500);
 			$droppedElement = ui.helper
 			if !$droppedElement.hasClass('dynamic-tool') && !$droppedElement.data('deleting')
 				$droppedElement.css
@@ -93,3 +79,25 @@ updateEventHandlers = () ->
 		$(@).empty()
 		$input = $('<textarea style="z-index:-2"></textarea><div class="carrier" style="display:none;"><i class="fa fa-arrows"></i></div>');
 		$(@).append($input.css('border', 'none')).unbind('click')
+
+# Sidebar toggle
+div = $("nav.sidebar")
+div.css
+	display: 'none'
+	width:0
+$("nav.sidebar .close-icon").click () ->
+	div = $("nav.sidebar")
+	div.animate
+		width:0
+		200
+		->
+			div.css('display', 'none')
+$(".logo").click () ->
+	div = $("nav.sidebar")
+	div.css
+		'display': 'block'
+	div.animate
+		width:250
+		200
+$(".submit-answer").click () ->
+	parseWorkspace()

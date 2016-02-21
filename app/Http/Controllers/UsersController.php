@@ -12,4 +12,7 @@ class UsersController extends Controller
     function getIndex() {
         return view('users.index');
     }
+    function workspaceIndex($workspace) {
+
+    }
 }

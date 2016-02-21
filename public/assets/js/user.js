@@ -1,4 +1,4 @@
-var currentMousePos, topics, updateEventHandlers, updateToolbox;
+var currentMousePos, div, parseWorkspace, topics, updateEventHandlers, updateToolbox;
 
 topics = ["mathematics", "electronics"];
 
@@ -33,25 +33,6 @@ $(document).mousemove(function(e) {
 $(function() {
   var selectbox;
   updateToolbox('mathematics');
-  $("nav.sidebar .close-icon").click(function() {
-    var div;
-    div = $("nav.sidebar");
-    return div.animate({
-      width: 0
-    }, 200, function() {
-      return div.css('display', 'none');
-    });
-  });
-  $(".logo").click(function() {
-    var div;
-    div = $("nav.sidebar");
-    div.css({
-      'display': 'block'
-    });
-    return div.animate({
-      width: 250
-    }, 200);
-  });
   $(".question .body").click(function() {
     return $("#showQuestionModal").modal();
   });
@@ -67,14 +48,14 @@ $(function() {
   $(".workspace").droppable({
     hoverClass: "hovered-workspace",
     out: function(event, ui) {
-      return $(this).find(".drop-notifier").fadeOut(500);
+      return $(this).find(".drop-notifier").fadeOut(200);
     },
     over: function(event, ui) {
-      return $(this).find(".drop-notifier").fadeIn(500);
+      return $(this).find(".drop-notifier").fadeIn(200);
     },
     drop: function(event, ui) {
       var $droppedElement, elem, elementToAdd, icon;
-      $(".drop-notifier").fadeOut(500);
+      $(".drop-notifier, .drop-notifier > span").fadeOut(500);
       $droppedElement = ui.helper;
       if (!$droppedElement.hasClass('dynamic-tool') && !$droppedElement.data('deleting')) {
         $droppedElement.css({
@@ -128,5 +109,53 @@ updateEventHandlers = function() {
     $(this).empty();
     $input = $('<textarea style="z-index:-2"></textarea><div class="carrier" style="display:none;"><i class="fa fa-arrows"></i></div>');
     return $(this).append($input.css('border', 'none')).unbind('click');
+  });
+};
+
+div = $("nav.sidebar");
+
+div.css({
+  display: 'none',
+  width: 0
+});
+
+$("nav.sidebar .close-icon").click(function() {
+  div = $("nav.sidebar");
+  return div.animate({
+    width: 0
+  }, 200, function() {
+    return div.css('display', 'none');
+  });
+});
+
+$(".logo").click(function() {
+  div = $("nav.sidebar");
+  div.css({
+    'display': 'block'
+  });
+  return div.animate({
+    width: 250
+  }, 200);
+});
+
+$(".submit-answer").click(function() {
+  return parseWorkspace();
+});
+
+parseWorkspace = function() {
+  return html2canvas($(".workspace"), {
+    onrendered: function(canvas) {
+      $.ajax({
+        url: "http://localhost:8000/api/v1/answers",
+        type: "POST",
+        data: {
+          image: canvas.toDataURL("image/png")
+        },
+        success: function(data, textStatus, jqXHR) {}
+      });
+      return console.log(data({
+        error: function(jqXHR, textStatus, errorThrown) {}
+      }));
+    }
   });
 };

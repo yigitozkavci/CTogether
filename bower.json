@@ -6,7 +6,8 @@
     "jquery-ui": "latest",
     "bootstrap": "latest",
     "font-awesome": "latest",
-    "sumoselect": "^2.0.2"
+    "sumoselect": "^2.0.2",
+    "html2canvas": "^0.4.1"
   },
   "resolutions": {
     "jquery": "2.2.*",

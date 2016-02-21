@@ -105,7 +105,7 @@
   display: block !important; }
 
 .workspace.hovered-workspace {
-  background-color: rgba(0, 76, 255, 0.05);
+  background-color: rgba(0, 76, 255, 0.1);
   -webkit-transition: 1s; }
 
 .dynamic-tool.carrier {
@@ -115,7 +115,7 @@
   position: absolute;
   background-color: #B30000;
   right: 15px;
-  top: 150px;
+  top: 110px;
   width: 100px;
   height: 50px;
   text-align: center;
@@ -126,3 +126,15 @@
 .trashbin.hovered-trashbin {
   opacity: 0.3;
   -webkit-transition: 0.2s; }
+
+.submit-answer {
+  position: absolute;
+  background-color: orange;
+  right: 15px;
+  bottom: 0;
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  color: white; }
+  .submit-answer i {
+    line-height: 50px; }

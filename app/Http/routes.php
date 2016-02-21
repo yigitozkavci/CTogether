@@ -12,22 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $topics = App\Topic::all();
+    return view('welcome', compact('topics'));
 });
-Route::controllers([
-    'workspace' => 'UsersController'
-]);
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
-*/
+Route::get('workspaces/{workspace}', 'WorkspacesController@index');
 
-Route::group(['middleware' => ['web']], function () {
-    //
-});
+/* API */
+Route::controller('api/v1', 'ApiController');

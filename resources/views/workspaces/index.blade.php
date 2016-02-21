@@ -120,12 +120,14 @@
 			Left Arrow
 		</div>
 	</div>
+	<!--
     <select class="topic-select sumoselect">
         <option value="mathematics">Mathematics</option>
         <option value="electronics">Electronics</option>
         <option value="programming">Programming</option>
         <option value="chemistry">Chemistry</option>
     </select>
+	-->
 	<div class="panel-title">
 		<h3>WORKSPACE</h3>
 	</div>
@@ -135,8 +137,11 @@
         </div>
 		<div class="drop-notifier">
             <i class="fa fa-download fa-2x"></i><br>
-			You can drag and drop tools here!
+			<span>You can drag and drop tools here!</span>
 		</div>
+        <div class="submit-answer">
+            <i class="fa fa-arrow-right"></i>
+        </div>
 	</div>
 </div>
 <div class="col-xs-6 questions-wrapper">
@@ -186,4 +191,5 @@
 @section('js')
     <script src="/libs/jquery-ui/jquery-ui.js"></script>
 	<script src="/assets/js/user.js"></script>
+    <script src="/assets/js/non-coffee-user.js"></script>
 @endsection
