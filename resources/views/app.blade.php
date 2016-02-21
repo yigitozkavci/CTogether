@@ -24,6 +24,7 @@
     @yield('css')
 </head>
     <body>
+
         <nav class="header">
             <div class="container-fluid">
                 <div class="col-xs-12">

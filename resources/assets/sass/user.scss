@@ -33,6 +33,14 @@
 			display:inline-block;
 		}
 	}
+	.SumoSelect {
+		width:140px;
+		margin:0;
+		float:right !important;
+		.SlectBox {
+			width:140px;
+		}
+	}
 }
 .questions {
 	height:-webkit-calc(100% - 120px);
@@ -49,6 +57,17 @@
 			height:30px;
 			color:gray;
 			padding:5px;
+			.footer-answers {
+				float:right;
+			}
+			.answer-button {
+				float:left;
+				i {
+					line-height:16px;
+					border:2px solid gray;
+					padding:0 5px;
+				}
+			}
 		}
 	}
 }
@@ -58,4 +77,9 @@
 	color:#c2c7d0;
 	margin:5px 0;
 	line-height:20px;
+}
+.single-question {
+	img {
+		width:100%;
+	}
 }
