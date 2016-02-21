@@ -33,6 +33,12 @@
 			display:inline-block;
 		}
 	}
+	.tool:hover {
+		background-color:$dblue;
+		color:white;
+		-webkit-transition:0.2s;
+		cursor:pointer;
+	}
 	.SumoSelect {
 		width:140px;
 		margin:0;
@@ -82,4 +88,11 @@
 	img {
 		width:100%;
 	}
+}
+.dynamic-tool {
+	position:absolute;
+}
+.workspace.hovered-workspace {
+	background-color:rgba(0, 76, 255, 0.3);
+	-webkit-transition:1s;
 }

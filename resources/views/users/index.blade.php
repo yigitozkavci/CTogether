@@ -36,36 +36,84 @@
 	<div class="panel-title">
 		<h3>TOOLBOX</h3>
 	</div>
-	<div class="toolbox">
+	<div class="toolbox" data-topic="mathematics">
 		<div class="tool">
-			<div class="icon" data-color="red">
+			<div class="icon">
+				&#8747;
+			</div>
+			<span>Integral</span>
+		</div>
+		<div class="tool">
+			<div class="icon">√</div>
+			<span>Squareroot</span>
+		</div>
+		<div class="tool">
+			<div class="icon">
+				<i class="fa fa-arrow-right"></i>
+			</div>
+			<span>Right Arrow</span>
+		</div>
+		<div class="tool">
+			<div class="icon">
+				<i class="fa fa-arrow-left"></i>
+			</div>
+			<span>Left Arrow</span>
+		</div>
+	</div>
+    <div class="toolbox" data-topic="electronics">
+		<div class="tool">
+			<div class="icon">
 				&#8747;
 			</div>
 			Integral
 		</div>
-		<div class="tool" data-color="red">
+		<div class="tool">
 			<div class="icon">√</div>
 			Squareroot
 		</div>
-		<div class="tool" data-color="red">
+		<div class="tool">
 			<div class="icon">
 				<i class="fa fa-arrow-right"></i>
 			</div>
 			Right Arrow
 		</div>
-		<div class="tool" data-color="red">
+		<div class="tool">
 			<div class="icon">
 				<i class="fa fa-arrow-left"></i>
 			</div>
 			Left Arrow
 		</div>
-        <select class="topic-select sumoselect">
-            <option value="mathematics">Mathematics</option>
-            <option value="electronics">Electronics</option>
-            <option value="programming">Programming</option>
-            <option value="chemistry">Chemistry</option>
-        </select>
 	</div>
+    <div class="toolbox" data-topic="chemistry">
+		<div class="tool">
+			<div class="icon">
+				&#8747;
+			</div>
+			Integral
+		</div>
+		<div class="tool">
+			<div class="icon">√</div>
+			Squareroot
+		</div>
+		<div class="tool">
+			<div class="icon">
+				<i class="fa fa-arrow-right"></i>
+			</div>
+			Right Arrow
+		</div>
+		<div class="tool">
+			<div class="icon">
+				<i class="fa fa-arrow-left"></i>
+			</div>
+			Left Arrow
+		</div>
+	</div>
+    <select class="topic-select sumoselect">
+        <option value="mathematics">Mathematics</option>
+        <option value="electronics">Electronics</option>
+        <option value="programming">Programming</option>
+        <option value="chemistry">Chemistry</option>
+    </select>
 	<div class="panel-title">
 		<h3>WORKSPACE</h3>
 	</div>
@@ -120,5 +168,6 @@
 	<link href="/assets/css/user.css" rel="stylesheet">
 @endsection
 @section('js')
+    <script src="/libs/jquery-ui/jquery-ui.js"></script>
 	<script src="/assets/js/user.js"></script>
 @endsection
