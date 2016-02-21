@@ -3,6 +3,7 @@
 	background-color:white;
 	border-radius:$border-radius;
 	height:-webkit-calc(100% - 200px);
+	z-index:0;
 	.drop-notifier {
 		border:2px dotted gray;
 		border-radius:10px;
@@ -13,7 +14,7 @@
 		margin-left:10%;
 		width:80%;
 		color:gray;
-		opacity:0.5;
+		opacity:0.3;
 		height:100px;
 		margin-top:200px;
 		text-align:center;
@@ -93,19 +94,68 @@
 }
 .dynamic-tool {
 	position:absolute;
+	z-index:2;
+}
+.dynamic-tool.text {
+	z-index:1;
 }
 .dynamic-tool:hover {
 	padding:10px;
 	margin-left:-11px;
 	margin-top:-11px;
 	cursor:pointer;
-	border:2px solid black;
-
+	border:2px solid gray;
+}
+.dynamic-tool:hover .carrier {
+	display:block !important;
 }
 .workspace.hovered-workspace {
-	background-color:rgba(0, 76, 255, 0.3);
+	background-color:rgba(0, 76, 255, 0.1);
 	-webkit-transition:1s;
 }
 .dynamic-tool.carrier {
 	height:100%;
+}
+.trashbin {
+	position:absolute;
+	background-color:$darkred;
+	right:15px;
+	top:110px;
+	width:100px;
+	height:50px;
+	text-align:center;
+	color:white;
+	i {
+		line-height:50px;
+	}
+}
+.trashbin.hovered-trashbin {
+	opacity:0.3;
+	-webkit-transition:0.2s;
+}
+.submit-answer {
+	position:absolute;
+	background-color:orange;
+	right:15px;
+	bottom:0;
+	width:100px;
+	height:50px;
+	text-align:center;
+	color:white;
+	i {
+		line-height:50px;
+	}
+}
+.create-question {
+	position:absolute;
+	background-color:green;
+	right:115px;
+	bottom:0;
+	width:100px;
+	height:50px;
+	text-align:center;
+	color:white;
+	i {
+		line-height:50px;
+	}
 }

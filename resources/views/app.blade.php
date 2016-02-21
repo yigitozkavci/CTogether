@@ -35,7 +35,7 @@
                 </div>
             </div>
         </nav>
-        <nav class="sidebar hidden" data-open="true">
+        <nav class="sidebar" data-open="false">
             <div class="sidebar-heading">
                 <div class="close-icon"><i class="fa fa-times"></i></div>
                 <div class="sidebar-logo">C<sup>2</sup>gether</div>
@@ -43,12 +43,14 @@
             <div class="clearfix"></div>
             <h2 class="rooms-heading">Rooms</h2>
             <div class="rooms">
-                <div class="room border-red">
-                    <span>Math</span>
-                    <div class="people-online-in-room">
-                        <i class="fa fa-user"></i> 233
+                @foreach($topics as $topic)
+                    <div class="room" style="border-left: 3px solid {{$topic->color}}">
+                        <span>{{$topic->name}}</span>
+                        <div class="people-online-in-room">
+                            <i class="fa fa-user"></i> <?php echo rand(10, 300) ?>
+                        </div>
                     </div>
-                </div>
+                @endforeach
                 <div class="room border-blue">
                     <span>Electronics</span>
                     <div class="people-online-in-room">
@@ -78,6 +80,7 @@
         <script src="/libs/jquery/dist/jquery.min.js"></script>
         <script src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="/libs/sumoselect/jquery.sumoselect.min.js"></script>
+        <script src="/libs/html2canvas/build/html2canvas.min.js"></script>
         @yield('js')
     </body>
 </html>

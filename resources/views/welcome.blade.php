@@ -44,11 +44,10 @@
             <h4 class="modal-title" id="myModalLabel">Available Rooms</h4>
           </div>
           <div class="modal-body modal-room-list">
-            <div class="modal-room">&#8730; Math</div>
-            <div class="modal-room">&#8911; Electronics</div>
-            <div class="modal-room">Programming</div>
-            <div class="modal-room">Web Programming</div>
-          </div>
+                @foreach($topics as $topic)
+                    <a href="/workspaces/{{$topic->slug}}" style="border-color:{{$topic->color}}" class="modal-room">{{$topic->name}}</a>
+                @endforeach
+        </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
@@ -66,7 +65,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">CTogether - <small>Ask together, solve together</small></a>
+                <a class="navbar-brand page-scroll" href="#page-top">C<sup>2</sup>Together</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -91,10 +90,10 @@
         <div class="container">
             <div class="intro-text">
                 <div class="intro-lead-in intro-lead-much-in">Ask together, solve together</div>
-                <div class="intro-lead-in">Start by creating a room or joining one</div>
+                <div class="intro-lead-in">Start by creating a workspace or joining one</div>
                 <div class="intro-heading">Now!</div>
-                <a href="#" class="btn btn-xl"><i class="fa fa-plus-circle"></i> Create Room</a>
-                <a class="btn btn-xl" data-toggle="modal" data-target="#joinRoomModal"><i class="fa fa-arrow-right"></i> Join Room</a>
+                <a href="#" class="btn btn-xl"><i class="fa fa-plus-circle"></i> Create a Workspace</a>
+                <a class="btn btn-xl" data-toggle="modal" data-target="#joinRoomModal"><i class="fa fa-arrow-right"></i> Join Workspace</a>
             </div>
         </div>
     </header>

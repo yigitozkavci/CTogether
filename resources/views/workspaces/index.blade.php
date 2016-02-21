@@ -1,6 +1,7 @@
 @extends('app')
 @section('content')
 <!-- Modal -->
+<div id="workspace">{{$workspace}}</div>
 <div class="modal fade" id="showQuestionModal" tabindex="-1" role="dialog" aria-labelledby="showQuestionModal">
   <div class="modal-dialog" role="document">
 	<div class="modal-content">
@@ -120,20 +121,31 @@
 			Left Arrow
 		</div>
 	</div>
+	<!--
     <select class="topic-select sumoselect">
         <option value="mathematics">Mathematics</option>
         <option value="electronics">Electronics</option>
         <option value="programming">Programming</option>
         <option value="chemistry">Chemistry</option>
     </select>
+	-->
 	<div class="panel-title">
 		<h3>WORKSPACE</h3>
 	</div>
 	<div class="workspace">
+        <div class="trashbin">
+            <i class="fa fa-trash fa-2x"></i>
+        </div>
 		<div class="drop-notifier">
             <i class="fa fa-download fa-2x"></i><br>
-			You can drag and drop tools here!
+			<span>You can drag and drop tools here!</span>
 		</div>
+        <div class="submit-answer">
+            <i class="fa fa-arrow-right"></i>
+        </div>
+        <div class="create-question">
+            <i class="fa fa-plus-circle"></i>
+        </div>
 	</div>
 </div>
 <div class="col-xs-6 questions-wrapper">
@@ -141,39 +153,20 @@
 		<h3>QUESTIONS</h3>
 	</div>
 	<div class="questions row">
+        @foreach($questions as $question)
 		<div class="question col-xs-6">
 			<div class="body">
-				<img src="http://placehold.it/400x400" alt="">
+                <img src="{{$question->image->src()}}">
+
 			</div>
 			<div class="footer">
 				<div class="answer-button">
 					<i class="fa fa-arrow-left"></i>
 				</div>
-				<div class="footer-answers">5 answers</div>
+				<div class="footer-answers">{{sizeof($question->comments)}}</div>
 			</div>
 		</div>
-		<div class="question col-xs-6">
-			<div class="body">
-				<img src="http://placehold.it/400x400" alt="">
-			</div>
-			<div class="footer">
-				<div class="answer-button">
-					<i class="fa fa-arrow-left"></i>
-				</div>
-				<div class="footer-answers">5 answers</div>
-			</div>
-		</div>
-		<div class="question col-xs-6">
-			<div class="body">
-				<img src="http://placehold.it/400x400" alt="">
-			</div>
-			<div class="footer">
-				<div class="answer-button">
-					<i class="fa fa-arrow-left"></i>
-				</div>
-				<div class="footer-answers">5 answers</div>
-			</div>
-		</div>
+        @endforeach
 	</div>
 </div>
 @endsection
@@ -183,4 +176,5 @@
 @section('js')
     <script src="/libs/jquery-ui/jquery-ui.js"></script>
 	<script src="/assets/js/user.js"></script>
+    <script src="/assets/js/non-coffee-user.js"></script>
 @endsection

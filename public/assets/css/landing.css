@@ -23,7 +23,9 @@
   padding: 5px;
   border-radius: 2px;
   -webkit-transition: 0.2s;
-  cursor: pointer; }
+  cursor: pointer;
+  margin-left: 5px;
+  margin-top: 5px; }
 
 .modal-room-list .modal-room:hover {
   background-color: #323F85;
@@ -34,3 +36,6 @@
 
 .intro-lead-in {
   font-size: 30px !important; }
+
+.intro-text {
+  padding-top: 200px !important; }
