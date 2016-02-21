@@ -64,7 +64,7 @@ $(function() {
     helper: "clone",
     containment: "html"
   });
-  return $(".workspace").droppable({
+  $(".workspace").droppable({
     hoverClass: "hovered-workspace",
     out: function(event, ui) {
       return $(this).find(".drop-notifier").fadeOut(500);
@@ -76,27 +76,38 @@ $(function() {
       var $droppedElement, elem, elementToAdd, icon;
       $(".drop-notifier").fadeOut(500);
       $droppedElement = ui.helper;
-      if (!$droppedElement.hasClass('dynamic-tool')) {
+      if (!$droppedElement.hasClass('dynamic-tool') && !$droppedElement.data('deleting')) {
         $droppedElement.css({
           position: "absolute",
           left: currentMousePos.x,
           top: currentMousePos.y
         });
         elem = ui.helper;
-        console.log(ui.offset);
         icon = elem.find(".icon").html();
-        elementToAdd = $('<div class="dynamic-tool">' + icon + '</div>').draggable().css({
+        elementToAdd = $('<div class="dynamic-tool">' + icon + '</div>');
+        if (elem.data('type') === 'text') {
+          elementToAdd.addClass('text');
+        }
+        elementToAdd.draggable().css({
           'left': ui.offset.left - 10,
           'top': ui.offset.top - 50,
           'position': 'absolute'
         });
-        console.log(elem.data('type'));
-        if (elem.data('type') === 'text') {
-          elementToAdd.addClass('text');
-        }
         $('.workspace').append(elementToAdd);
         return updateEventHandlers();
       }
+    }
+  });
+  return $(".trashbin").droppable({
+    hoverClass: "hovered-trashbin",
+    over: function(event, ui) {
+      return $(ui.helper).data('deleting', true);
+    },
+    drop: function(event, ui) {
+      var $droppedElement;
+      $droppedElement = ui.helper;
+      console.log($droppedElement);
+      return $droppedElement.remove();
     }
   });
 });
@@ -115,7 +126,7 @@ updateEventHandlers = function() {
   return $(".dynamic-tool.text").click(function() {
     var $input;
     $(this).empty();
-    $input = $('<input type="text"><div class="carrier"></div>');
-    return $(this).append($input.css('border', 'none')).unbind();
+    $input = $('<textarea style="z-index:-2"></textarea><div class="carrier" style="display:none;"><i class="fa fa-arrows"></i></div>');
+    return $(this).append($input.css('border', 'none')).unbind('click');
   });
 };

@@ -45,7 +45,7 @@ $ ->
 		helper: "clone"
 		containment: "html"
 	$(".workspace").droppable
-		hoverClass: "hovered-workspace",
+		hoverClass: "hovered-workspace"
 		out: (event, ui) ->
 			$(@).find(".drop-notifier").fadeOut(500)
 		over: (event, ui) ->
@@ -53,24 +53,33 @@ $ ->
 		drop: (event, ui) ->
 			$(".drop-notifier").fadeOut(500);
 			$droppedElement = ui.helper
-			if !$droppedElement.hasClass('dynamic-tool')
+			if !$droppedElement.hasClass('dynamic-tool') && !$droppedElement.data('deleting')
 				$droppedElement.css
 					position: "absolute"
 					left: currentMousePos.x
 					top: currentMousePos.y
 				elem = ui.helper
-				console.log ui.offset
 				icon = elem.find(".icon").html()
-				elementToAdd = $('<div class="dynamic-tool">'+icon+'</div>').draggable().css( {
+				elementToAdd = $('<div class="dynamic-tool">'+icon+'</div>')
+				if elem.data('type') == 'text'
+					elementToAdd.addClass('text')
+				elementToAdd.draggable().css( {
 					'left': ui.offset.left-10,
 					'top': ui.offset.top-50,
 					'position': 'absolute'
 				})
-				console.log elem.data('type')
-				if elem.data('type') == 'text'
-					elementToAdd.addClass('text')
 				$('.workspace').append(elementToAdd)
 				updateEventHandlers()
+
+	# Deleting objects that are left to the trashbin
+	$(".trashbin").droppable
+		hoverClass: "hovered-trashbin"
+		over: (event, ui) ->
+			$(ui.helper).data('deleting', true)
+		drop: (event, ui) ->
+			$droppedElement = ui.helper
+			console.log $droppedElement
+			$droppedElement.remove()
 # Re-renders whole toolbox according to the information given.
 updateToolbox = (topic) ->
 	$(".toolbox").hide()
@@ -82,5 +91,5 @@ updateEventHandlers = () ->
 	# Text tool
 	$(".dynamic-tool.text").click () ->
 		$(@).empty()
-		$input = $('<input type="text"><div class="carrier"></div>');
-		$(@).append($input.css('border', 'none')).unbind()
+		$input = $('<textarea style="z-index:-2"></textarea><div class="carrier" style="display:none;"><i class="fa fa-arrows"></i></div>');
+		$(@).append($input.css('border', 'none')).unbind('click')

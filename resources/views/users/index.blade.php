@@ -130,6 +130,9 @@
 		<h3>WORKSPACE</h3>
 	</div>
 	<div class="workspace">
+        <div class="trashbin">
+            <i class="fa fa-trash fa-2x"></i>
+        </div>
 		<div class="drop-notifier">
             <i class="fa fa-download fa-2x"></i><br>
 			You can drag and drop tools here!
