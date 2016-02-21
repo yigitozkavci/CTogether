@@ -35,7 +35,7 @@
                 </div>
             </div>
         </nav>
-        <nav class="sidebar" data-open="true">
+        <nav class="sidebar hidden" data-open="true">
             <div class="sidebar-heading">
                 <div class="close-icon"><i class="fa fa-times"></i></div>
                 <div class="sidebar-logo">C<sup>2</sup>gether</div>

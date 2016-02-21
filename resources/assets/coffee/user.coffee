@@ -45,7 +45,11 @@ $ ->
 		helper: "clone"
 		containment: "html"
 	$(".workspace").droppable
-		hoverClass: "hovered-workspace"
+		hoverClass: "hovered-workspace",
+		out: (event, ui) ->
+			$(@).find(".drop-notifier").fadeOut(500)
+		over: (event, ui) ->
+			$(@).find(".drop-notifier").fadeIn(500)
 		drop: (event, ui) ->
 			$(".drop-notifier").fadeOut(500);
 			$droppedElement = ui.helper
@@ -54,16 +58,29 @@ $ ->
 					position: "absolute"
 					left: currentMousePos.x
 					top: currentMousePos.y
-				console.log "Dropped:"
 				elem = ui.helper
-				$('.workspace').append($('<div class="dynamic-tool"><i class="fa fa-home"></i></div>').draggable().css( {
-					'left': currentMousePos.x-60,
-					'top': currentMousePos.y-60,
+				console.log ui.offset
+				icon = elem.find(".icon").html()
+				elementToAdd = $('<div class="dynamic-tool">'+icon+'</div>').draggable().css( {
+					'left': ui.offset.left-10,
+					'top': ui.offset.top-50,
 					'position': 'absolute'
-				}))
+				})
+				console.log elem.data('type')
+				if elem.data('type') == 'text'
+					elementToAdd.addClass('text')
+				$('.workspace').append(elementToAdd)
+				updateEventHandlers()
+# Re-renders whole toolbox according to the information given.
 updateToolbox = (topic) ->
 	$(".toolbox").hide()
 	$(".toolbox").each () ->
 		if $(@).data('topic') == topic
 			$(@).show()
 			false
+updateEventHandlers = () ->
+	# Text tool
+	$(".dynamic-tool.text").click () ->
+		$(@).empty()
+		$input = $('<input type="text"><div class="carrier"></div>');
+		$(@).append($input.css('border', 'none')).unbind()

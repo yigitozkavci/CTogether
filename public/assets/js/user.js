@@ -1,4 +1,4 @@
-var currentMousePos, topics, updateToolbox;
+var currentMousePos, topics, updateEventHandlers, updateToolbox;
 
 topics = ["mathematics", "electronics"];
 
@@ -66,8 +66,14 @@ $(function() {
   });
   return $(".workspace").droppable({
     hoverClass: "hovered-workspace",
+    out: function(event, ui) {
+      return $(this).find(".drop-notifier").fadeOut(500);
+    },
+    over: function(event, ui) {
+      return $(this).find(".drop-notifier").fadeIn(500);
+    },
     drop: function(event, ui) {
-      var $droppedElement, elem;
+      var $droppedElement, elem, elementToAdd, icon;
       $(".drop-notifier").fadeOut(500);
       $droppedElement = ui.helper;
       if (!$droppedElement.hasClass('dynamic-tool')) {
@@ -76,13 +82,20 @@ $(function() {
           left: currentMousePos.x,
           top: currentMousePos.y
         });
-        console.log("Dropped:");
         elem = ui.helper;
-        return $('.workspace').append($('<div class="dynamic-tool"><i class="fa fa-home"></i></div>').draggable().css({
-          'left': currentMousePos.x - 60,
-          'top': currentMousePos.y - 60,
+        console.log(ui.offset);
+        icon = elem.find(".icon").html();
+        elementToAdd = $('<div class="dynamic-tool">' + icon + '</div>').draggable().css({
+          'left': ui.offset.left - 10,
+          'top': ui.offset.top - 50,
           'position': 'absolute'
-        }));
+        });
+        console.log(elem.data('type'));
+        if (elem.data('type') === 'text') {
+          elementToAdd.addClass('text');
+        }
+        $('.workspace').append(elementToAdd);
+        return updateEventHandlers();
       }
     }
   });
@@ -95,5 +108,14 @@ updateToolbox = function(topic) {
       $(this).show();
       return false;
     }
+  });
+};
+
+updateEventHandlers = function() {
+  return $(".dynamic-tool.text").click(function() {
+    var $input;
+    $(this).empty();
+    $input = $('<input type="text"><div class="carrier"></div>');
+    return $(this).append($input.css('border', 'none')).unbind();
   });
 };

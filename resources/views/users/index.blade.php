@@ -59,6 +59,18 @@
 			</div>
 			<span>Left Arrow</span>
 		</div>
+        <div class="tool">
+			<div class="icon">
+				<sup>2</sup>
+			</div>
+			<span>Square</span>
+		</div>
+        <div class="tool" data-type="text">
+			<div class="icon">
+				<i class="fa fa-text-width"></i>
+			</div>
+			<span>Text</span>
+		</div>
 	</div>
     <div class="toolbox" data-topic="electronics">
 		<div class="tool">
@@ -119,6 +131,7 @@
 	</div>
 	<div class="workspace">
 		<div class="drop-notifier">
+            <i class="fa fa-download fa-2x"></i><br>
 			You can drag and drop tools here!
 		</div>
 	</div>
