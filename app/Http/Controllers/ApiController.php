@@ -11,21 +11,23 @@ use Storage;
 use App\Image;
 use App\Question;
 use Session;
+use App\DynamicIcon;
 class ApiController extends Controller
 {
     function getTopics(Request $request) {
-        $workspace = Session::get('workspace');
-        return view('trial', compact('workspace'));
+        return json_encode(Topic::all());
     }
     function postAnswers(Request $request) {
         $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $request->image));
-        $image = Image::create([
+        $question = Question::find($request->question_id);
+        $comment = Comment::create();
+        $question->comments()->save($comment);
+        $comment->images->save(Image::create([
             'data' => $data
-            ]);
-        return json_encode(Storage::disk('dynamic_images')->put($image->created_at, $data));
+            ]));
+        return json_encode("Yis");
     }
     function postQuestions(Request $request) {
-
         $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $request->image));
         $question = Question::create([
             'text' => 'wowowo',
@@ -36,5 +38,15 @@ class ApiController extends Controller
             ]);
         $question->image_id = $image->id;
         $question->save();
+
+        $dynamic_icons = $request->dynamic_icons;
+        foreach($dynamic_icons as $dynamic_icon) {
+            $d = DynamicIcon::create($dynamic_icon);
+            $image->dynamicIcons()->save($d);
+        }
+    }
+    function getQuestionComponents(Request $request) {
+        $question = Question::find($request->question_id);
+        return json_encode($question->image->getComponents());
     }
 }

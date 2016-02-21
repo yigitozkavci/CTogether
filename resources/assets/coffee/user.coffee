@@ -43,7 +43,7 @@ $ ->
 					icon: icon,
 					positions: {
 						left: elementToAdd.left,
-						right: elementToAdd.right
+						top: elementToAdd.top
 					},
 					type: elem.data('type')
 				});

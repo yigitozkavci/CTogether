@@ -6,3 +6,4 @@ Homestead.json
 /nbproject/private/
 public/libs
 .gitignore
+public/dynamic_images

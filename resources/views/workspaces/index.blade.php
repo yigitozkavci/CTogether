@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
 <!-- Modal -->
-<div id="workspace">{{$workspace}}</div>
+<div id="workspace" class="hidden">{{$workspace}}</div>
 <div class="modal fade" id="showQuestionModal" tabindex="-1" role="dialog" aria-labelledby="showQuestionModal">
   <div class="modal-dialog" role="document">
 	<div class="modal-content">
@@ -157,10 +157,9 @@
 		<div class="question col-xs-6">
 			<div class="body">
                 <img src="{{$question->image->src()}}">
-
 			</div>
 			<div class="footer">
-				<div class="answer-button">
+				<div class="solve-button" data-question="{{$question->id}}">
 					<i class="fa fa-arrow-left"></i>
 				</div>
 				<div class="footer-answers">{{sizeof($question->comments)}}</div>

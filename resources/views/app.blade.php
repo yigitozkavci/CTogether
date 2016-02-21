@@ -44,12 +44,14 @@
             <h2 class="rooms-heading">Rooms</h2>
             <div class="rooms">
                 @foreach($topics as $topic)
-                    <div class="room" style="border-left: 3px solid {{$topic->color}}">
-                        <span>{{$topic->name}}</span>
-                        <div class="people-online-in-room">
-                            <i class="fa fa-user"></i> <?php echo rand(10, 300) ?>
+                    <a href="/workspaces/{{$topic->slug}}">
+                        <div class="room" style="border-left: 3px solid {{$topic->color}}">
+                            <span>{{$topic->name}}</span>
+                            <div class="people-online-in-room">
+                                <i class="fa fa-user"></i> <?php echo rand(10, 300) ?>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
                 <div class="room border-blue">
                     <span>Electronics</span>
