@@ -1,3 +1,4 @@
+var base_url = "http://localhost:8000/";
 parseWorkspace = function(callback) {
 	html2canvas($(".workspace"), {
 		onrendered: function(canvas) {
@@ -8,13 +9,13 @@ parseWorkspace = function(callback) {
 $(".solve-button").click(function() {
 	var question_id = $(this).data('question');
 	$.ajax({
-		url: "http://localhost:8000/api/v1/question-components",
+		url: base_url+"api/v1/question-components",
 		type: "GET",
 		data: {
 			question_id: question_id
 		},
 		success: function(data) {
-			console.log(JSON.parse(data));
+			$('.dynamic-tool').remove();
 			for(i in JSON.parse(data)) {
 				var datum = JSON.parse(data)[i];
 				console.log(datum);
@@ -24,25 +25,28 @@ $(".solve-button").click(function() {
 					top: datum.pos_top,
 					position: "absolute"
 				});
-				console.log($elem);
 				$(".workspace").append($elem.draggable());
+				$(".solving-mode").fadeIn(500).html('Solving question: '+question_id);
+				console.log($(".submit-answer").attr('data-question', question_id));
 			}
 		}
 	});
 });
 $(".submit-answer").click(function() {
-	var canvas = parseWorkspace();
-	var question_id = $(this).data('question')
-	$.ajax({
-		url: "http://localhost:8000/api/v1/answers",
-		type: "POST",
-		data: {
-			image: canvas.toDataURL("image/png"),
-			question_id: question_id
-		},
-		success: function(data, textStatus, jqXHR) {
-			console.log("Wow, so success!");
-		}
+	var dis = $(this);
+	var canvas = parseWorkspace(function(canvas) {
+		var question_id = dis.data('question')
+		$.ajax({
+			url: base_url+"api/v1/answers",
+			type: "POST",
+			data: {
+				image: canvas.toDataURL("image/png"),
+				question_id: question_id
+			},
+			success: function(data, textStatus, jqXHR) {
+				console.log("Wow, so success!");
+			}
+		});
 	});
 });
 $(".create-question").click(function() {
@@ -58,7 +62,7 @@ $(".create-question").click(function() {
 	});
 	parseWorkspace(function(canvas) {
 		$.ajax({
-			url: "http://localhost:8000/api/v1/questions",
+			url: base_url+"api/v1/questions",
 			type: "POST",
 			data: {
 				image: canvas.toDataURL("image/png"),
@@ -66,8 +70,33 @@ $(".create-question").click(function() {
 				dynamic_icons: dynamic_icons
 			},
 			success: function(data, textStatus, jqXHR) {
-				//location.reload()
+				location.reload()
 			}
 		});
+	});
+});
+$(".question .body").click(function() {
+	$("#showQuestionModal").modal();
+	var question_id = $(this).parent().data('id');
+	$.ajax({
+		url: base_url+'api/v1/questions/'+question_id,
+		type: "GET",
+		success: function(data) {
+			data = JSON.parse(data);
+			$(".single-question .question-title").html(data.text);
+		}
+	});
+	var answers = [];
+	$.ajax({
+		url: base_url+'api/v1/questions/'+question_id+'/answers',
+		type: "GET",
+		success: function(data) {
+			data = JSON.parse(data);
+			for(var i = 0; i < data.length; i++) {
+				var answer = $('<div class="answer"><div>');
+				answer.html(data[i].text);
+				$(".answers").append(answer);
+			}
+		}
 	});
 });

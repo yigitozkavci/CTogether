@@ -68,3 +68,10 @@ nav.header {
     line-height: 60px;
     color: white;
     cursor: pointer; }
+
+.solving-mode {
+  font-size: 14px;
+  color: #c2c7d0;
+  line-height: 20px;
+  margin: 5px 0;
+  margin-left: 10px; }

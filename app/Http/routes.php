@@ -18,4 +18,5 @@ Route::get('/', function () {
 Route::get('workspaces/{workspace}', 'WorkspacesController@index');
 
 /* API */
+Route::get('api/v1/questions/{question_id}/answers', 'ApiController@getQuestionAnswers');
 Route::controller('api/v1', 'ApiController');

@@ -7,7 +7,7 @@
 	<div class="modal-content">
 	  <div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<h4 class="modal-title" id="myModalLabel">{Question Name}</h4>
+		<h4 class="modal-title" id="myModalLabel question-header"></h4>
 	  </div>
 	  <div class="modal-body single-question">
 		<div class="col-xs-6">
@@ -15,14 +15,10 @@
 		</div>
 		<div class="col-xs-6">
 			<div class="panel-title">
-				<h3>TOOLBOX</h3>
+				<h3 class="question-title"></h3>
 			</div>
 			<div class="answers">
-				<div class="answer">{Answer 1}</div>
-				<div class="answer">{Answer 2}</div>
-				<div class="answer">{Answer 3}</div>
-				<div class="answer">{Answer 4}</div>
-				<div class="answer">{Answer 5}</div>
+				
 			</div>
 		</div>
 		<div class="clearfix"></div>
@@ -121,16 +117,8 @@
 			Left Arrow
 		</div>
 	</div>
-	<!--
-    <select class="topic-select sumoselect">
-        <option value="mathematics">Mathematics</option>
-        <option value="electronics">Electronics</option>
-        <option value="programming">Programming</option>
-        <option value="chemistry">Chemistry</option>
-    </select>
-	-->
 	<div class="panel-title">
-		<h3>WORKSPACE</h3>
+		<h3 style="float:left;">WORKSPACE</h3><h4 class="solving-mode" style="display:none;float:left"></h4><div class="clearfix"></div>
 	</div>
 	<div class="workspace">
         <div class="trashbin">
@@ -154,7 +142,7 @@
 	</div>
 	<div class="questions row">
         @foreach($questions as $question)
-		<div class="question col-xs-6">
+		<div class="question col-xs-6" data-id="{{$question->id}}">
 			<div class="body">
                 <img src="{{$question->image->src()}}">
 			</div>

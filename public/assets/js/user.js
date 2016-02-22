@@ -17,9 +17,6 @@ $(document).mousemove(function(e) {
 $(function() {
   var selectbox;
   updateToolbox('mathematics');
-  $(".question .body").click(function() {
-    return $("#showQuestionModal").modal();
-  });
   selectbox = $(".sumoselect");
   selectbox.SumoSelect();
   selectbox.change(function(event) {

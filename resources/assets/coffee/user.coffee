@@ -6,8 +6,6 @@ $(document).mousemove (e) ->
 	currentMousePos.y = e.pageY;
 $ ->
 	updateToolbox('mathematics')
-	$(".question .body").click () ->
-		$("#showQuestionModal").modal();
 	selectbox = $(".sumoselect")
 	selectbox.SumoSelect()
 	selectbox.change (event) ->

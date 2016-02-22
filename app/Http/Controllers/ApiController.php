@@ -10,6 +10,7 @@ use App\Topic;
 use Storage;
 use App\Image;
 use App\Question;
+use App\Comment;
 use Session;
 use App\DynamicIcon;
 class ApiController extends Controller
@@ -22,15 +23,19 @@ class ApiController extends Controller
         $question = Question::find($request->question_id);
         $comment = Comment::create();
         $question->comments()->save($comment);
-        $comment->images->save(Image::create([
+        $image = Image::create([
             'data' => $data
-            ]));
+        ]);
+        $comment->image_id = $image->id;
         return json_encode("Yis");
+    }
+    function getQuestions(Request $request, $question_id) {
+        return json_encode(Question::findOrFail($question_id));
     }
     function postQuestions(Request $request) {
         $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $request->image));
         $question = Question::create([
-            'text' => 'wowowo',
+            'text' => "Lorem ipsum dolor sit amet",
             'topic' => $request->workspace
         ]);
         $image = Image::create([
@@ -48,5 +53,8 @@ class ApiController extends Controller
     function getQuestionComponents(Request $request) {
         $question = Question::find($request->question_id);
         return json_encode($question->image->getComponents());
+    }
+    function getQuestionAnswers(Request $request, $question_id) {
+        return json_encode(Question::findOrFail($question_id)->comments);
     }
 }
