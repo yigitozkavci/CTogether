@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class AddNameFieldsToUsers extends Migration
 {
@@ -15,8 +15,7 @@ class AddNameFieldsToUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('firstname');
             $table->string('lastname');
-          
-            
+
 //
         });
     }

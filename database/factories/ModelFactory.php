@@ -13,18 +13,19 @@
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->safeEmail,
-        'password' => bcrypt(str_random(10)),
+        'name'           => $faker->name,
+        'email'          => $faker->safeEmail,
+        'password'       => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
     ];
 });
-$factory->define(App\Topic::class, function(Faker\Generator $faker) {
+$factory->define(App\Topic::class, function (Faker\Generator $faker) {
     $name = $faker->word;
     $slug = slugify($name);
+
     return [
-        'name' => $name,
-        'slug' => $slug,
-        'color' => $faker->hexcolor
+        'name'  => $name,
+        'slug'  => $slug,
+        'color' => $faker->hexcolor,
     ];
 });

@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class DynamicIcon extends Model
 {
-    public function image() {
+    public function image()
+    {
         $this->belongsTo('App\Image');
     }
+
     protected $guarded = [];
 }
