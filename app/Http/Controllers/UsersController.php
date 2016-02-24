@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 class UsersController extends Controller
 {
-    function getIndex() {
+    public function getIndex()
+    {
         return view('users.index');
     }
-    function workspaceIndex($workspace) {
 
+    public function workspaceIndex($workspace)
+    {
     }
 }

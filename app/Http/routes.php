@@ -13,6 +13,7 @@
 
 Route::get('/', function () {
     $topics = App\Topic::all();
+
     return view('welcome', compact('topics'));
 });
 Route::get('workspaces/{workspace}', 'WorkspacesController@index');

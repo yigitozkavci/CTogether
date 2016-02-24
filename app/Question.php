@@ -7,16 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     protected $guarded = [];
-    public function owner() {
+
+    public function owner()
+    {
         return $this->belongsTo('App\User', 'owner_id');
     }
-    public function topic() {
+
+    public function topic()
+    {
         return $this->belongsTo('App\Topic');
     }
-    public function comments() {
+
+    public function comments()
+    {
         return $this->hasMany('App\Comment');
     }
-    public function image() {
+
+    public function image()
+    {
         return $this->belongsTo('App\Image');
     }
 }

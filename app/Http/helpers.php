@@ -1,7 +1,8 @@
 <?php
+
 function slugify($text)
 {
-  // replace non letter or digits by -
+    // replace non letter or digits by -
   $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
 
   // trim
@@ -16,13 +17,13 @@ function slugify($text)
   // remove unwanted characters
   $text = preg_replace('~[^-\w]+~', '', $text);
 
-  if (empty($text))
-  {
-    return 'n-a';
-  }
+    if (empty($text)) {
+        return 'n-a';
+    }
 
-  return $text;
+    return $text;
 }
-function randomEnum(array $array = array()) {
-    return $array[rand(0, sizeof($array)-1)];
+function randomEnum(array $array = [])
+{
+    return $array[rand(0, count($array) - 1)];
 }
